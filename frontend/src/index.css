@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 10% 96%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 250 75% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 250 75% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(250 75% 60%), hsl(260 75% 65%));
+    --gradient-subtle: linear-gradient(180deg, hsl(240 10% 98%), hsl(240 10% 96%));
+    --gradient-suri: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    --gradient-suri-light: linear-gradient(135deg, #ff6b6b, #ffa726);
+    --shadow-soft: 0 4px 12px -2px hsl(250 75% 60% / 0.1);
+    --shadow-card: 0 10px 25px -5px hsl(240 10% 3.9% / 0.1);
+    --shadow-suri: 0 8px 32px -8px rgba(255, 107, 107, 0.3);
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 250 75% 60%;
+    --primary-foreground: 240 10% 3.9%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 250 75% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  }
+}
+
+@layer components {
+  .auth-container {
+    @apply min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-gray-50 to-gray-100;
+  }
+  
+  .auth-card {
+    @apply w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .auth-form-section {
+    @apply flex-1 p-8 flex flex-col justify-center;
+  }
+  
+  .auth-welcome-section {
+    @apply flex-1 relative overflow-hidden;
+    background: var(--gradient-suri);
+  }
+  
+  .auth-welcome-content {
+    @apply absolute inset-0 flex flex-col justify-center items-center text-white p-8 z-10;
+  }
+  
+  .auth-form {
+    @apply space-y-6;
+  }
+  
+  .auth-input {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-orange-500 focus:ring-0 transition-all duration-300;
+  }
+  
+  .auth-button {
+    @apply w-full py-3 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-105;
+    background: var(--gradient-suri);
+    box-shadow: var(--shadow-suri);
+  }
+  
+  .auth-button:hover {
+    box-shadow: 0 12px 40px -8px rgba(255, 107, 107, 0.4);
+  }
+  
+  .auth-toggle-button {
+    @apply px-6 py-2 rounded-full border-2 border-white text-white font-medium transition-all duration-300 hover:bg-white hover:text-orange-500;
+  }
+  
+  .social-login-button {
+    @apply w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center transition-all duration-300 hover:border-orange-500 hover:bg-orange-50;
+  }
+  
+  .floating-shapes {
+    @apply absolute inset-0 overflow-hidden;
+  }
+  
+  .shape {
+    @apply absolute rounded-full opacity-20;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .shape-1 {
+    @apply w-32 h-32 bg-white top-10 left-10;
+    animation-delay: 0s;
+  }
+  
+  .shape-2 {
+    @apply w-24 h-24 bg-white top-32 right-16;
+    animation-delay: 2s;
+  }
+  
+  .shape-3 {
+    @apply w-16 h-16 bg-white bottom-20 left-20;
+    animation-delay: 4s;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-suri);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
